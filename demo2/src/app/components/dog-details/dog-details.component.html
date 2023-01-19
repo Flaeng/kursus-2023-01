@@ -1,0 +1,21 @@
+
+<div *ngIf="selectedDog">
+  <div [ngSwitch]="selectedDog.age">
+    <div *ngSwitchCase="7">
+      Hunden er 7 år gammel
+    </div>
+    <div *ngSwitchDefault>
+      Hunden er ikke 7 år gammel
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedDog; else ingenHundValgt">
+  <b>Navn: {{ selectedDog.name }}</b><br />
+  <b>Alder: {{ selectedDog.age }}</b>
+</div>
+
+<ng-template #ingenHundValgt let-language="language">
+  <p *ngIf="language !== 'en'">Ingen hund valgt</p>
+  <p *ngIf="language === 'en'">No dog selected</p>
+</ng-template>

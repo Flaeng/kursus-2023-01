@@ -1,0 +1,23 @@
+
+{{ dateNow | date:'HH:mm dd/MM-YYYY' }}
+
+<div style="margin-top:20px">
+  <app-dog-list
+  (dogChanged)="selectedDog = $event"
+  ></app-dog-list>
+</div>
+
+<app-dog-details
+  [dog]="selectedDog"
+></app-dog-details>
+
+
+<div *ngTemplateOutlet="footer; context: { language: 'da' }"></div>
+<div *ngTemplateOutlet="footer; context: { language: 'en' }"></div>
+
+<ng-template #footer let-language="language">
+  <p *ngIf="language !== 'en'">Fod</p>
+  <p *ngIf="language === 'en'">Footer</p>
+</ng-template>
+
+<router-outlet></router-outlet>
